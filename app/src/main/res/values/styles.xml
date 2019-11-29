@@ -1,0 +1,47 @@
+<resources>
+
+    <!-- Base application theme. Theme.AppCompat.Light.DarkActionBar-->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppSplash" parent="android:Theme.NoTitleBar.Fullscreen"> <!--继承至activity-->
+        <item name="android:windowBackground">@mipmap/icon_splash</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.NoTitle_FullScreen"> <!--自定义主题名称-->
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowBackground">@mipmap/icon_splash</item>
+    </style>
+
+    <style name="MyCheckBox" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/checkbox_selector</item>
+        <item name="android:paddingLeft">25.0dip</item>
+        <item name="android:maxHeight">10.0dip</item>
+
+    </style>
+
+    <style name="AppBaseTheme" parent="android:Theme.Holo.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <style name="popupAnimation" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/popwindow_in</item>
+        <item name="android:windowExitAnimation">@anim/popwindow_out</item>
+    </style>
+
+    <style name="hint_style">
+        <item name="android:textColor">@color/hint_color</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>

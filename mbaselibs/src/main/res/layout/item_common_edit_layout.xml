@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="15dp">
+        <TextView
+            android:layout_width="88dp"
+            android:layout_height="wrap_content"
+            style="@style/title_style"
+            android:id="@+id/item_title"/>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="-15dp"
+            android:layout_marginBottom="-15dp"
+            android:id="@+id/item_edittext"
+            android:background="@null"
+            style="@style/content_style"
+            android:gravity="right|center_vertical"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/item_extra"
+            android:layout_marginLeft="@dimen/margin_0.5normal_size"
+            android:visibility="gone"
+            style="@style/title_style"
+            android:text="元"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/separaor_line_height"
+        android:id="@+id/item_line1"
+        android:layout_marginLeft="@dimen/margin_1.5normal_size"
+        android:layout_marginRight="@dimen/margin_1.5normal_size"
+        android:background="@color/separaor_line_color"/>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/separaor_line_height"
+        android:id="@+id/item_line2"
+        android:visibility="gone"
+        android:background="@color/separaor_line_color"/>
+
+</LinearLayout>

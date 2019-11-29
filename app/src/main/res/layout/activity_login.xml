@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg"
+    android:orientation="vertical" >
+    <ScrollView 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/login_layout">
+        <LinearLayout 
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_gray_null_bg"
+                style="@style/item_layout_padding_style"
+                android:layout_marginRight="@dimen/margin_3normal_size"
+                android:layout_gravity="right"
+                android:gravity="center"
+                android:textColor="@color/main_color"
+                android:textSize="@dimen/txt_normal_size"
+                android:layout_marginTop="3dp"
+                android:id="@+id/config_server"
+                android:text="配置"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="@dimen/title_bar_height"
+                android:layout_marginBottom="20dp"
+                android:layout_gravity="center_horizontal"
+                android:textSize="@dimen/txt_normal_add6_size"
+                android:text="水资源监测系统"/>
+
+            <EditText 
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/login_phone"
+                android:hint="用户名"
+                android:gravity="center"
+                android:inputType="text"
+                android:maxLines="1"
+                android:maxLength="16"
+                android:background="@drawable/shape_white_bg"
+                android:textColor="@color/text_second_color"
+                android:textColorHint="@color/gray"
+                android:textSize="@dimen/txt_normal_size"
+                style="@style/item_layout_padding_style"
+                android:layout_marginTop="@dimen/margin_3normal_size"
+                android:layout_marginRight="@dimen/margin_3normal_size"
+                android:layout_marginLeft="@dimen/margin_3normal_size"/>
+
+            <EditText
+                android:id="@+id/login_pwd"
+                style="@style/item_layout_padding_style"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_3normal_size"
+                android:layout_marginRight="@dimen/margin_3normal_size"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/shape_white_bg"
+                android:gravity="center"
+                android:hint="密码"
+                android:inputType="textPassword"
+                android:maxLength="16"
+                android:singleLine="true"
+                android:textColor="@color/text_second_color"
+                android:textColorHint="@color/gray"
+                android:textSize="@dimen/txt_normal_size" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_2normal_size"
+                android:layout_marginLeft="@dimen/margin_3normal_size">
+                <CheckBox
+                    android:id="@+id/checkbox"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    style="@style/MyCheckBox"
+                    android:checked="false"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="33dp"
+                    android:id="@+id/checktext"
+                    android:gravity="center"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:layout_marginLeft="@dimen/margin_normal_size"
+                    android:background="@drawable/shape_white_bg"
+                    android:textColor="@color/black"
+                    android:text="自动登录"/>
+            </LinearLayout>
+
+            <Button 
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/login_btn"
+                android:background="@color/ok_btn_color"
+                android:textColor="@color/white"
+                android:textSize="@dimen/txt_normal_add4_size"
+                android:gravity="center"
+                android:text="登录"
+                style="@style/item_layout_padding_style"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="@dimen/margin_3normal_size"
+                android:layout_marginLeft="@dimen/margin_3normal_size"/>
+
+
+        </LinearLayout>
+    </ScrollView>
+    
+
+</LinearLayout>

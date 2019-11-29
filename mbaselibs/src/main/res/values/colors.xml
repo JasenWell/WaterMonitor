@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg_Gray">#CCCCCC</color>
+    <!-- 黑色 -->
+    <color name="tv_Black">#000000</color>
+
+    <color name="title_bar_color">#1296db</color>
+    <color name="app_bg">#eeeeee</color>
+    <color name="separaor_line_color">#cccccc</color>
+
+    <color name="main_color">#333333</color>
+    <color name="text_second_color">#666666</color>
+
+    <color name="search_bg_color">#e5e6ea</color>
+    <color name="image_code_bg_color">#999999</color>
+    <color name="ok_btn_color">#1296db</color>
+
+    <color name="hint_color">#b4b4bc</color>
+
+    <color name="cafe_color">#9d8862</color>
+
+    <color name="title_color">#282828</color>
+    <color name="calendar_color">#9b885f</color>
+
+    <!-- 以上为主旋律颜色 https://baike.baidu.com/pic/%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E9%A2%9C%E8%89%B2%E7%A0%81/10894232/0/c83d70cf3bc79f3d1fb20600b9a1cd11728b29ab?fr=lemma&ct=single#aid=0&pic=c83d70cf3bc79f3d1fb20600b9a1cd11728b29ab-->
+    <color name="black">#333333</color>
+    <color name="green">#00ff00</color>
+    <color name="white">#ffffffff</color>
+    <color name="blue">#0000ff</color>
+    <color name="red">#ff0000</color>
+    <color name="orange">#ff7f00</color>
+    <color name="yellow">#ffff00</color>
+
+    <color name="money">#817051</color>
+
+    <color name="black2">#ff000000</color>
+    <color name="color_clarity">#00000000</color>
+    <color name="trans_dark">#70333333</color>
+    <color name="gray">#999999</color>
+    <color name="default_date">#666666</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <!-- 透明 -->
+    <color name="lucency">#00000000</color>
+
+    <color name="b_half_lucency">#b0000000</color>
+    <color name="gray_lucency">#3fedafff</color>
+    <!-- 半透明 -->
+    <color name="e_half_lucency">#e0000000</color>
+    <color name="calendar_grid_border">#FFC6C6C6</color>
+</resources>

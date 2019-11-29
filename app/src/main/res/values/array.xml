@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string-array name="WebUrlArray">
+    <!--     <item>file:///android_asset/tpl/index.html</item> --> 
+
+    </string-array>
+    
+    <array name="tab_select_image">
+        <item>@mipmap/home_check</item>
+        <item>@mipmap/warning_check</item>
+        <item>@mipmap/consume_check</item>
+        <item>@mipmap/self_check</item>
+    </array>
+
+
+    <array name="tab_normal_image">
+        <item>@mipmap/home_uncheck</item>
+        <item>@mipmap/warning_uncheck</item>
+        <item>@mipmap/consume_uncheck</item>
+        <item>@mipmap/self_uncheck</item>
+    </array>
+
+
+
+    <string-array name="tab_bottom_array">
+        <item>首页</item>
+        <item>告警</item>
+        <item>水耗</item>
+        <item>我的</item>
+    </string-array>
+
+
+    
+    
+</resources>

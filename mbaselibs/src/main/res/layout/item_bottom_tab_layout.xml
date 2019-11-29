@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:id="@+id/root_layout"
+    android:orientation="vertical" >
+    <RelativeLayout 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/layout"
+        android:layout_gravity="center_horizontal">
+        <ImageView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:id="@+id/tab_icon"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tab_icon"
+            android:visibility="gone"
+            android:scaleType="centerCrop"
+            android:id="@+id/tab_point"/>
+        <TextView 
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:textSize="22px"
+            android:textColor="@color/white"
+            android:layout_toRightOf="@id/tab_icon"
+            android:visibility="gone"
+            android:singleLine="true"
+            android:id="@+id/tab_number"
+            android:gravity="center"/>
+        
+    </RelativeLayout>
+    
+    <TextView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_marginTop="8dp"
+        android:layout_gravity="center_horizontal"
+        android:textSize="@dimen/txt_normal_reduce2_size"
+        android:textColor="@color/gray"
+        android:id="@+id/tab_text"/>
+    
+</LinearLayout>

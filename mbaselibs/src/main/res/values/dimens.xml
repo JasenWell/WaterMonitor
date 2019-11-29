@@ -1,0 +1,63 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    
+    
+    <dimen name="title_bar_height">48dp</dimen>
+    <dimen name="banner_height">150dp</dimen>
+    <dimen name="button_height">44dp</dimen>
+    
+    <dimen name="shape_corner_radius">8px</dimen>
+    
+    <dimen name="icon_smalll_size">40dp</dimen>
+    <dimen name="product_normal_size">88dp</dimen>
+    <dimen name="product_suo_size">88dp</dimen>
+    <dimen name="product_small_size">66dp</dimen>
+
+    <dimen name="product_count_symbol_width">30dp</dimen>
+    <dimen name="product_count_height">20dp</dimen>
+
+    <dimen name="type_margin_left_size">110dp</dimen>
+    <!--分类类别规格 -->
+    <dimen name="type_size">95dp</dimen>
+    
+    <dimen name="wheel_view_item_height">25dp</dimen>
+    
+    <dimen name="separaor_line_height">1px</dimen>
+    <dimen name="shape_stroke_width">1px</dimen>
+    <dimen name="shape_btn_corner_radius">2dp</dimen>
+    
+    <dimen name="padding_0.5normal_size">5dp</dimen>
+    <dimen name="padding_0.8normal_size">8dp</dimen>
+    <dimen name="padding_normal_size">10dp</dimen>
+    <dimen name="padding_1.5normal_size">15dp</dimen>
+    <dimen name="padding_2normal_size">20dp</dimen>
+
+    <dimen name="margin_normal_size">10dp</dimen>
+    <dimen name="margin_0.5normal_size">5dp</dimen>
+    <dimen name="margin_0.8normal_size">8dp</dimen>
+    <dimen name="margin_1.5normal_size">15dp</dimen>
+    <dimen name="margin_2normal_size">20dp</dimen>
+    <dimen name="margin_2.5normal_size">25dp</dimen>
+    <dimen name="margin_3normal_size">30dp</dimen>
+    <dimen name="margin_3.5normal_size">35dp</dimen>
+    <dimen name="margin_4normal_size">40dp</dimen>
+
+
+    <dimen name="txt_normal_reduce3_size">11sp</dimen>
+    <dimen name="txt_normal_reduce2_size">12sp</dimen>
+    <dimen name="txt_normal_reduce1_size">13sp</dimen>
+    <dimen name="txt_normal_size">14sp</dimen>
+    <dimen name="txt_normal_add1_size">15sp</dimen>
+    <dimen name="txt_normal_add2_size">16sp</dimen>
+    <dimen name="txt_normal_add4_size">18sp</dimen>
+    <dimen name="txt_normal_add5_size">19sp</dimen>
+    <dimen name="txt_normal_add6_size">20sp</dimen>
+    <dimen name="txt_normal_add7_size">21sp</dimen>
+
+
+
+
+</resources>

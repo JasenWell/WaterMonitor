@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="Item_style">
+        <attr name="item_title" format="string"/>
+        <attr name="item_hint" format="string"/>
+        <attr name="item_icon" format="reference"/>
+        <attr name="item_right_icon" format="reference"/>
+        <attr name="item_input_length" format="integer"/>
+        <attr name="item_show_next" format="boolean"/>
+        <attr name="item_show_line1" format="boolean"/>
+        <attr name="item_show_line_mode">
+           <enum name="NONE" value="0"/> 
+           <enum name="FILL" value="1"/> 
+           <enum name="NOT_FILL" value="2"/> 
+        </attr>
+        <attr name="item_input_type">
+            <enum name="TEXT" value="1"/>
+            <enum name="NUMBER" value="2"/>
+            <enum name="PHONE" value="3"/>
+            <enum name="PASSWORD" value="128"/>
+        </attr>
+        
+        <attr name="item_title_color" format="reference"/>
+        <attr name="item_content_color" format="reference"/>
+    </declare-styleable>
+    
+    <!-- 日期,布局编号 -->
+     <declare-styleable name="DateItemLayout">
+         <attr name="date_layout_number" format="integer"/>
+         <attr name="date_layout_select_type" format="integer"/>
+     </declare-styleable>
+    
+      <!-- 动态容器布局 -->
+    <declare-styleable name="DynamicLayout">
+        <!-- 容器距左视图的距离 -->
+        <attr name="margin_left" format="dimension|reference"/>
+        <!-- 容器距右视图的距离 -->
+        <attr name="margin_right" format="dimension|reference"/>
+        <!-- 容器左边视图的宽 -->
+        <attr name="left_view_width" format="dimension|reference"/>
+        <!-- 容器右边视图的宽 -->
+        <attr name="right_view_width" format="dimension|reference"/>
+        <!-- 容器内每行布局最低高 -->
+        <attr name="row_min_height" format="dimension|reference"/>
+        <!-- 容器内每行布局内部视图的高 -->
+        <attr name="content_view_height" format="dimension|reference"/>
+        
+         <!-- 容器内每行布局内部视图的左间距 -->
+        <attr name="content_view_margin_left" format="dimension|reference"/>
+        <!-- 容器内每行布局内部视图的右间距 -->
+        <attr name="content_view_margin_right" format="dimension|reference"/>
+        <!-- 容器内每行布局内部视图的顶间距 -->
+        <attr name="content_view_margin_top" format="dimension|reference"/>
+        <!-- 容器内每行布局内部视图的底间距 -->
+        <attr name="content_view_margin_bottom" format="dimension|reference"/>
+        
+        <!-- 容器内每行布局内部视图的内容左间距 -->
+        <attr name="content_view_padding_left" format="dimension|reference"/>
+        <!-- 容器内每行布局内部视图的内容右间距 -->
+        <attr name="content_view_padding_right" format="dimension|reference"/>
+        <!-- 容器内每行布局内部视图的内容顶间距 -->
+        <attr name="content_view_padding_top" format="dimension|reference"/>
+        <!-- 容器内每行布局内部视图的内容底间距 -->
+        <attr name="content_view_padding_bottom" format="dimension|reference"/>
+        
+    </declare-styleable>
+    
+    <declare-styleable name="GifView">
+        <attr name="gif" format="reference" />
+        <attr name="paused" format="boolean" />
+    </declare-styleable>
+    
+    <declare-styleable name="CustomTheme">
+        <attr name="gifViewStyle" format="reference" />
+    </declare-styleable>
+    
+    <attr name="borderRadius" format="dimension" />
+    <attr name="type">
+        <enum name="circle" value="0" />
+        <enum name="round" value="1" />
+    </attr>
+
+
+    <declare-styleable name="ShaderImageView">
+        <attr name="borderRadius" />
+        <attr name="type" />
+    </declare-styleable>
+    
+    <declare-styleable name="ModuleLayout">
+        <attr name="total_number" format="integer"/>
+        <attr name="row_number" format="integer"/>
+        <attr name="image_horizontal_padding" format="integer"/>
+        <attr name="image_vertical_padding" format="integer"/>
+        <attr name="module_margin_left" format="dimension|reference"/>
+        <attr name="module_margin_right" format="dimension|reference"/>
+        <attr name="module_default_icon" format="reference"/>
+        <attr name="module_is_delete" format="boolean"/>
+    </declare-styleable>
+    
+    
+</resources>

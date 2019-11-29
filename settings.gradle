@@ -1,0 +1,2 @@
+include ':app', ':mbaselibs'
+rootProject.name='WaterMonitor'

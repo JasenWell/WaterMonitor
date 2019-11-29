@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg"
+    android:orientation="vertical"
+    tools:context="com.android.zht.waterwatch.ui.WarningGatherActivity">
+    <com.android.zht.waterwatch.widget.AppTitleLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/title_bar_height"
+        android:id="@+id/title_bar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_2normal_size">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_date_today"
+            android:background="@drawable/shape_white_bg"
+            android:layout_marginLeft="@dimen/margin_2normal_size"
+            android:layout_marginRight="@dimen/margin_4normal_size"
+            android:padding="@dimen/padding_normal_size"
+            android:textSize="@dimen/txt_normal_size"
+            android:textColor="@color/black"
+            android:text="2019年3月"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_white_bg"
+            android:id="@+id/btn_search"
+            android:padding="@dimen/padding_normal_size"
+            android:textSize="@dimen/txt_normal_size"
+            android:textColor="@color/black"
+            android:text="查询"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_marginTop="@dimen/margin_2normal_size"
+        android:background="@color/white"
+        android:gravity="center_vertical">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/item_number"
+            android:gravity="center"
+            android:padding="@dimen/padding_0.8normal_size"
+            android:text="序号"
+            android:textColor="@color/ok_btn_color"
+            android:textSize="@dimen/txt_normal_size" />
+        <View
+            android:layout_width="@dimen/separaor_line_height"
+            android:layout_height="match_parent"
+            android:background="@color/separaor_line_color" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/item_type"
+            android:gravity="center"
+            android:padding="@dimen/padding_0.8normal_size"
+            android:text="告警类型"
+            android:textColor="@color/black"
+            android:textSize="@dimen/txt_normal_size" />
+        <View
+            android:layout_width="@dimen/separaor_line_height"
+            android:layout_height="match_parent"
+            android:background="@color/separaor_line_color" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/item_count"
+            android:gravity="center"
+            android:padding="@dimen/padding_0.8normal_size"
+            android:text="告警数量"
+            android:textColor="@color/black"
+            android:textSize="@dimen/txt_normal_size" />
+        <View
+            android:layout_width="@dimen/separaor_line_height"
+            android:layout_height="match_parent"
+            android:background="@color/separaor_line_color" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/item_dispose"
+            android:gravity="center"
+            android:padding="@dimen/padding_0.8normal_size"
+            android:text="已处理"
+            android:textColor="@color/black"
+            android:textSize="@dimen/txt_normal_size" />
+        <View
+            android:layout_width="@dimen/separaor_line_height"
+            android:layout_height="match_parent"
+            android:background="@color/separaor_line_color" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/item_undispose"
+            android:gravity="center"
+            android:padding="@dimen/padding_0.8normal_size"
+            android:text="未处理"
+            android:textColor="@color/black"
+            android:textSize="@dimen/txt_normal_size" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_normal_size"
+            android:orientation="vertical"
+            android:id="@+id/container"/>
+    </ScrollView>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/bottom_layout"
+            android:layout_margin="@dimen/margin_2normal_size"
+            android:gravity="center_vertical">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_up"
+                android:background="@drawable/shape_white_bg"
+                android:layout_marginRight="@dimen/margin_4normal_size"
+                android:gravity="center"
+                android:padding="@dimen/padding_0.8normal_size"
+                android:text="上一页"
+                android:textColor="@color/black"
+                android:textSize="@dimen/txt_normal_size" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_down"
+                android:background="@drawable/shape_white_bg"
+                android:gravity="center"
+                android:padding="@dimen/padding_0.8normal_size"
+                android:text="下一页"
+                android:textColor="@color/black"
+                android:textSize="@dimen/txt_normal_size" />
+        </LinearLayout>
+</LinearLayout>

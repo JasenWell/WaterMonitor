@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/layout"
+        android:gravity="center_vertical">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="一级表10只"
+            android:textColor="@color/black"
+            android:textSize="@dimen/txt_normal_reduce2_size" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_weight="1">
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/online"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_0.5normal_size"
+                android:gravity="center"
+                android:text="在线8只"
+                android:textColor="@color/black"
+                android:textSize="@dimen/txt_normal_reduce2_size" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_weight="1">
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/offline"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_0.5normal_size"
+                android:gravity="center"
+                android:text="离线3只"
+                android:textColor="@color/black"
+                android:textSize="@dimen/txt_normal_reduce2_size" />
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

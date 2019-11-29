@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/loading_hint_layout"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rotate_view" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/progress"
+            android:layout_marginLeft="5dp"
+            android:textColor="@color/white"
+            android:text="23%"/>
+    </LinearLayout>
+    <com.hjh.baselib.image.zoom.PhotoView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:src="@mipmap/ic_launcher"
+        android:id="@+id/big_photo"/>
+
+</RelativeLayout>

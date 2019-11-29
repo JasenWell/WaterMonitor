@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg"
+    android:orientation="vertical" >
+    <com.android.zht.waterwatch.widget.AppTitleLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/title_bar_height"
+        android:id="@+id/title_bar" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/user_center_bg">
+
+                <TextView
+                    android:id="@+id/user_nick"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:layout_marginBottom="35dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/txt_normal_size" />
+            </FrameLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/separaor_line_height"
+                android:layout_marginTop="@dimen/margin_0.5normal_size"
+                android:background="@color/separaor_line_color" />
+
+            <com.android.zht.waterwatch.widget.ShowItemLayout
+                android:id="@+id/suggest_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:item_title="意见反馈" />
+
+            <com.android.zht.waterwatch.widget.ShowItemLayout
+                android:id="@+id/pwd_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                app:item_title="修改密码" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/separaor_line_height"
+                android:layout_marginTop="@dimen/margin_normal_size"
+                android:background="@color/separaor_line_color" />
+
+            <com.android.zht.waterwatch.widget.ShowItemLayout
+                android:id="@+id/cache_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                app:item_title="清除缓存" />
+
+            <com.android.zht.waterwatch.widget.ShowItemLayout
+                android:id="@+id/version_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                app:item_title="检查更新" />
+
+            <Button
+                android:id="@+id/login_out_btn"
+                style="@style/item_layout_padding_style"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_1.5normal_size"
+                android:layout_marginRight="@dimen/margin_1.5normal_size"
+                android:layout_marginTop="@dimen/margin_2normal_size"
+                android:background="@drawable/shape_red_bg"
+                android:gravity="center"
+                android:text="退出登录"
+                android:textColor="@color/white"
+                android:textSize="@dimen/txt_normal_add1_size" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

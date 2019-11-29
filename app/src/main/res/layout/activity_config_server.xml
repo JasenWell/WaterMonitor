@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/app_bg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.android.zht.waterwatch.widget.AppTitleLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/title_bar_height"
+        android:id="@+id/title_bar"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/text_padding_style"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/main_color"
+            android:text="服务器地址："/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/server_ip"
+            android:hint="139.199.165.130"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/text_padding_style"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/main_color"
+            android:text="服务器端口："/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/server_port"
+            android:hint="9092"/>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_config"
+        style="@style/item_layout_padding_style"
+        android:background="@drawable/shape_red_bg"
+        android:layout_margin="30dp"
+        android:textColor="@color/white"
+        android:text="确定"/>
+</LinearLayout>
