@@ -10,7 +10,7 @@ public class UserInfo implements Serializable{
 	private int id;
 	private String userAccount;
 	private String userPassword;
-	private int userType;//类型权限控制  (3.超级管理员(可以查看所有单位所有校区) 2.单位总管(可以看该单位所有校区) 1.普通用户)
+	private int userType;//类型权限控制  (3.超级管理员(可以查看所有单位所有校区) 2.单位总管(可以看该单位所有校区) 1.普通用户0)
 	private String userName;
 	private long openTime;//账号启用时间
 	private String userPhone;
@@ -21,7 +21,8 @@ public class UserInfo implements Serializable{
 	private String extendKey2 ;/*备用字段2*/
 	private String extendKey3 ;/*备用字段3*/
 	private String extendKey4 ;/*备用字段4*/
-	
+	private String gisurl;
+	private String yanzhenma;
 	
 	public UserInfo(){
 		
@@ -129,5 +130,21 @@ public class UserInfo implements Serializable{
 
 	public void setExtendKey4(String extendKey4) {
 		this.extendKey4 = extendKey4;
+	}
+
+	public String getGisurl() {
+		return gisurl;
+	}
+
+	public void setGisurl(String gisurl) {
+		this.gisurl = gisurl;
+	}
+
+	public String getYanzhenma() {
+		return yanzhenma;
+	}
+
+	public void setYanzhenma(String yanzhenma) {
+		this.yanzhenma = yanzhenma;
 	}
 }

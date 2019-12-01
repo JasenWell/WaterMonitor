@@ -1,0 +1,1 @@
+﻿keytool -importkeystore -srckeystore D:\github\workspace\Android\*.jks -destkeystore D:\github\workspace\Android\*.jks -deststoretype pkcs12

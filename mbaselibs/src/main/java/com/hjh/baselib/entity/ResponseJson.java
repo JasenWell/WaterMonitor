@@ -26,7 +26,11 @@ public final class ResponseJson<T> implements Serializable {
 	@Expose
 	private  T data;
 
-	
+	@Expose
+	private String gisurl;
+
+	@Expose
+	private String yanzhenma;
 
 	public int getStatus() {
 		return status;
@@ -102,6 +106,19 @@ public final class ResponseJson<T> implements Serializable {
         };
     }
 
-    
-    
+	public String getGisurl() {
+		return gisurl;
+	}
+
+	public void setGisurl(String gisurl) {
+		this.gisurl = gisurl;
+	}
+
+	public String getYanzhenma() {
+		return yanzhenma;
+	}
+
+	public void setYanzhenma(String yanzhenma) {
+		this.yanzhenma = yanzhenma;
+	}
 }

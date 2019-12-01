@@ -1,5 +1,6 @@
 package com.android.zht.waterwatch.net.imp;
 
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
@@ -9,15 +10,19 @@ import com.android.zht.waterwatch.callback.IBaseCallBack;
 import com.android.zht.waterwatch.constants.EConfig;
 import com.android.zht.waterwatch.net.HttpHelper;
 import com.android.zht.waterwatch.net.param.Params;
+import com.hjh.baselib.entity.MessageEvent;
 import com.hjh.baselib.entity.ResponseJson;
 import com.hjh.baselib.net.OkHttpUtils;
 import com.hjh.baselib.utils.NetworkUtil;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
+import okhttp3.ResponseBody;
 
 
 public class AsynModelImp implements IAsynModel {
@@ -29,8 +34,40 @@ public class AsynModelImp implements IAsynModel {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
+            if(msg.what == 1000){
+                iBaseCallBack.getActivity().hideLoadDialog();
+            }else if(msg.what  == 1233){
+                HttpHelper.BUSINESS business = (HttpHelper.BUSINESS) msg.obj;
+                iBaseCallBack.showErrorInfo(business.getCode()+1,business.getErrorMsg());
+            }else if(msg.what == 1234){
+                HttpHelper.BUSINESS business = (HttpHelper.BUSINESS) msg.obj;
+                iBaseCallBack.onSuccess(business.getResponseJson(), business.getCode());
+            }else if(msg.what == 1235){
+                MessageEvent event = (MessageEvent) msg.obj;
+                iBaseCallBack.showErrorInfo(event.getType(),event.getDes());
+            }
         }
     };
+
+    public  byte[] readBytes(InputStream is){
+        try {
+            byte[] buffer = new byte[1024*5];
+            int len = -1 ;
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            while((len = is.read(buffer)) != -1){
+                baos.write(buffer, 0, len);
+            }
+            baos.close();
+            return baos.toByteArray();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null ;
+    }
+
+    public  String readString(InputStream is){
+        return new String(readBytes(is));
+    }
 
     private class  CallbackImp implements Callback{
 
@@ -46,34 +83,50 @@ public class AsynModelImp implements IAsynModel {
 
         @Override
         public void onFailure(Call call,final IOException e) {
-            handler.post(new Runnable() {
-                @Override
-                public void run() {
-                    iBaseCallBack.getActivity().hideLoadDialog();
-                    Log.e(getClass().toString(),e.toString());
-                    iBaseCallBack.showErrorInfo(business.getCode()+1,e.toString());
-                }
-            });
+            handler.sendEmptyMessage(1000);
+            Log.e(getClass().toString(),e.toString());
+            Message message = new Message();
+            message.what = 1233;
+            business.setErrorMsg(e.toString());
+            message.obj = business;
+            handler.sendMessage(message);
+
         }
         @Override
         public void onResponse(Call call, final Response response) throws IOException {
-            handler.post(new Runnable() {
+            new Thread(new Runnable(){
                 @Override
                 public void run() {
-                    iBaseCallBack.getActivity().hideLoadDialog();
+                    handler.sendEmptyMessage(1000);
+                    int status = 0;
+                    Message message = new Message();
+                    business.setResponse(response);
+
                     String json = null;
                     try {
                         json = response.body().string();
-                    } catch (IOException e) {
+                        status = 1;
+                        Log.e(getClass().toString(), json);
+                        if (!onCheckCode(response, business.getCode() + 1)) {
+                            return;
+                        }
+                        ResponseJson responseJson = ResponseJson.fromJson(json, business.getClazz());
+                        business.setResponseJson(responseJson);
+                    } catch (Exception e) {
                         e.printStackTrace();
-                        iBaseCallBack.showErrorInfo(business.getCode()+1,e.toString());
+                        business.setErrorMsg(e.toString());
                         return;
                     }
-                    Log.e(getClass().toString(), json);
-                    if (!onCheckCode(response, business.getCode() + 1)) return;
-                    iBaseCallBack.onSuccess(ResponseJson.fromJson(json, business.getClazz()), business.getCode());
+
+                    if(status == 0){
+                        message.what = 1233;
+                    }else {
+                        message.what = 1234;
+                    }
+                    message.obj = business;
+                    handler.sendMessage(message);
                 }
-            });
+            }).start();
         }
     }
 
@@ -113,14 +166,18 @@ public class AsynModelImp implements IAsynModel {
         okHttpUtils.post(Params.getPasswordParams(userid,newpassword), HttpHelper.PostGetUrl(business.getBusiness())).enqueue(new CallbackImp(business));
     }
 
-
-
     /*
      * 判断返回的状态码是否正确
      */
     private boolean onCheckCode(Response response,int...args){
         if(response.code() != 200){
-            iBaseCallBack.showErrorInfo(args.length == 0 ? EConfig.RESPONSE_FAILED : args[0],response.message());
+            MessageEvent event = new MessageEvent();
+            event.setType(args.length == 0 ? EConfig.RESPONSE_FAILED : args[0]);
+            event.setDes(response.message());
+            Message message = handler.obtainMessage();
+            message.obj = event;
+            message.what = 1235;
+            handler.sendMessage(message);
             return false;
         }
 

@@ -8,6 +8,8 @@
     <dimen name="title_bar_height">48dp</dimen>
     <dimen name="banner_height">150dp</dimen>
     <dimen name="button_height">44dp</dimen>
+
+    <dimen name="width_date">100dp</dimen>
     
     <dimen name="shape_corner_radius">8px</dimen>
     

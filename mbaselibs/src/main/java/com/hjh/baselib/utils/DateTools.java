@@ -1,5 +1,6 @@
 package com.hjh.baselib.utils;
 
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
@@ -53,7 +54,7 @@ public final class DateTools {
 	 * HH:mm��ʽ
 	 */
 	public static final SimpleDateFormat SHORT_FORMAT = new SimpleDateFormat("HH:mm");
-	
+	public static final DecimalFormat decimalFormat = new DecimalFormat("0.000000");
 	private DateTools() {
 
 	}
@@ -282,5 +283,20 @@ public final class DateTools {
         }
         
         return weekDays[w];
+	}
+
+	public static String formatTimestamp(String orginal){ //位数不够的时间戳补0
+		String mDate = orginal;
+		if(mDate != null) {
+			int length = mDate.length();
+			if (length < 13){
+				String endZeroStr = decimalFormat.format(Long.valueOf(mDate));
+				mDate = endZeroStr.replace(".","").substring(0,13);
+			}
+			String t = DateTools.toDateString(DateTools.toDate(Long.valueOf(mDate)));
+			return t;
+		}
+
+		return null;
 	}
 }

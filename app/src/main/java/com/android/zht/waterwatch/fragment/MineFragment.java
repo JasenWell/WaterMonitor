@@ -9,8 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.android.zht.waterwatch.R;
+import com.android.zht.waterwatch.bean.UserInfo;
 import com.android.zht.waterwatch.bean.VersionInfo;
 import com.android.zht.waterwatch.net.HttpHelper;
 import com.android.zht.waterwatch.net.HttpType;
@@ -64,6 +66,9 @@ public class MineFragment extends LBaseFragment implements ShowItemLayout.OnClic
 	@BindView(R.id.login_out_btn)
 	Button mButton;
 
+	@BindView(R.id.user_nick)
+	TextView mNick;
+
 	/**
 	 * 传入fragment的参数
 	 */
@@ -101,6 +106,7 @@ public class MineFragment extends LBaseFragment implements ShowItemLayout.OnClic
 		super.onAfterCreate(savedInstanceState);
 		mTitleLayout.setTitleText("个人信息");
 		mTitleLayout.disableLeftButton();
+		mNick.setText(AppPresences.getInstance().getString(ModuleConfig.KEY_LOGIN_NAME));
 	}
 
 	@Override
@@ -144,6 +150,7 @@ public class MineFragment extends LBaseFragment implements ShowItemLayout.OnClic
 							AppPresences.getInstance().putString(HttpHelper.ACTION.KEY_USER_ID,"");
 							AppPresences.getInstance().putString(ModuleConfig.KEY_TOKEN, "");
 							AppPresences.getInstance().putString(HttpHelper.ACTION.KEY_USER_PHONE,"");
+							AppPresences.getInstance().putString(ModuleConfig.KEY_LOGIN_PWD,"");
 							mActivity.startActivityWithAnim(mActivity, new Intent(mActivity, LoginActivity.class));
 							AppActivityManager.getInstance().finishAllActivity();
 						}
@@ -225,11 +232,12 @@ public class MineFragment extends LBaseFragment implements ShowItemLayout.OnClic
 		RequestData requestData = new RequestData(HttpType.CHECK_UPDATE);
 		Map<String,String> map = new HashMap<>();
 		map.put("account",AppPresences.getInstance().getString(ModuleConfig.KEY_LOGIN_ACCOUNT));
-		map.put("userId",AppPresences.getInstance().getString(ModuleConfig.KEY_USER_ID));
+		map.put("userId",AppPresences.getInstance().getInt(ModuleConfig.KEY_USER_ID)+"");
 		map.put("clientType","1");
 		map.put("clientCode",AppVersionManager.getInstance().getAppVersionCode(mActivity)+"");
 		requestData.setRequestParameters(map);
-		mActivity.showLoadDialog();
+		showToast("已是最新版本");
+//		mActivity.showLoadDialog();
 //				VersionInfo info = responseJson.getData();
 //				info.setForceUpgrade(false);
 //				if(info.isForceUpgrade()){

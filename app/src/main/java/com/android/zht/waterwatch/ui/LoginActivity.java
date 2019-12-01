@@ -84,14 +84,17 @@ public class LoginActivity extends LBaseActivity implements IBaseCallBack<Respon
 		});
 
 		if(AppPresences.getInstance().getBoolean(ModuleConfig.KEY_AUTO_LOGIN,false)){
+			String pwd = AppPresences.getInstance().getString(ModuleConfig.KEY_LOGIN_PWD);
 			mAccountText.setText(AppPresences.getInstance().getString(ModuleConfig.KEY_LOGIN_ACCOUNT));
-			mPwdText.setText(AppPresences.getInstance().getString(ModuleConfig.KEY_LOGIN_PWD));
-			selectLast(mAccountText);
-			selectLast(mPwdText);
-			mAccountText.setFocusable(false);
-			mPwdText.setFocusable(true);
-			checkBox.setChecked(true);
-			onLogin();
+			if(!StringTools.isEmpty(pwd)) {
+				mPwdText.setText(pwd);
+				selectLast(mAccountText);
+				selectLast(mPwdText);
+//				mAccountText.setFocusable(false);
+//				mPwdText.setFocusable(true);
+				checkBox.setChecked(true);
+				onLogin();
+			}
 		}
 
 		checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -164,8 +167,8 @@ public class LoginActivity extends LBaseActivity implements IBaseCallBack<Respon
 		requestData.setRequestParameters(map);
 		setLoadHint("登录中...");
 		showLoadDialog();
-		switchPage(new UserInfo());
-		asynModelImp.postJson(HttpHelper.BUSINESS.REQUEST_LOGIN, ResponseJson.objectToJson(requestData));
+		asynModelImp.login(HttpHelper.BUSINESS.REQUEST_LOGIN,account,pwd);
+//		asynModelImp.postJson(HttpHelper.BUSINESS.REQUEST_LOGIN, ResponseJson.objectToJson(requestData));
 	}
 
 
@@ -176,18 +179,26 @@ public class LoginActivity extends LBaseActivity implements IBaseCallBack<Respon
 
 	@Override
 	public void onSuccess(ResponseJson<UserInfo> responseJson, int type) {
+		if(responseJson.getStatus() != 1){
+			showErrorInfo(responseJson.getStatus(),responseJson.getInfo());
+			return;
+		}
 		UserInfo userInfo = responseJson.getData();
+		userInfo.setGisurl(responseJson.getGisurl());
+		userInfo.setYanzhenma(responseJson.getYanzhenma());
 		AppPresences.getInstance().putString(ModuleConfig.KEY_USER_PHONE,userInfo.getUserPhone());
-		AppPresences.getInstance().putInt(ModuleConfig.KEY_USER_ID,userInfo.getId());
+		AppPresences.getInstance().putInt(ModuleConfig.KEY_USER_ID,userInfo.getDepartmentInfo().getUserId());
 
 		AppPresences.getInstance().putString(ModuleConfig.KEY_LOGIN_ACCOUNT,account);
 		AppPresences.getInstance().putString(ModuleConfig.KEY_TOKEN,account);
 		AppPresences.getInstance().putString(ModuleConfig.KEY_LOGIN_PWD,pwd);
+		AppPresences.getInstance().putString(ModuleConfig.KEY_LOGIN_NAME,userInfo.getUserName());
+		AppPresences.getInstance().putInt(ModuleConfig.KEY_LOGIN_ROLE,userInfo.getUserType());
 		switchPage(userInfo);
 	}
 
 	private void switchPage(UserInfo userInfo){
-		Intent intent =  new Intent(mActivity,MainActivity.class);
+		Intent intent =  new Intent(mActivity,MainReplaceActivity.class);
 		intent.putExtra("user_info",userInfo);
 		startActivityWithAnim(mActivity,intent);
 		back(mActivity);

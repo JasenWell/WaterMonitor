@@ -43,5 +43,6 @@ public class MessageEvent<T> implements Serializable {
         int DELETE_ALL_FILES = 4;//删除了所有文件
         int REFRESH_COLLECT_LIST = 5;//刷新收藏文件列表
         int REFRESH_HISTORY_LIST = 6;//刷新历史记录列表
+        int REFRESH_HOME = 7;
     }
 }

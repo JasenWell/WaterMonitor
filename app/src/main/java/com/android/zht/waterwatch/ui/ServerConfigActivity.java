@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.android.zht.waterwatch.R;
+import com.android.zht.waterwatch.net.HttpHelper;
 import com.android.zht.waterwatch.widget.AppTitleLayout;
 import com.hjh.baselib.base.LBaseActivity;
 import com.hjh.baselib.utils.AppPresences;
@@ -44,8 +45,8 @@ public class ServerConfigActivity extends LBaseActivity {
         mTitleLayout.setTitleText("服务器配置");
         mTitleLayout.enableLeftButton();
         mTitleLayout.setTitleClickListener(this);
-        ipView.setText(AppPresences.getInstance().getString("server_ip","139.199.165.130"));
-        portView.setText(AppPresences.getInstance().getString("server_port","9092"));
+        ipView.setText(AppPresences.getInstance().getString("server_ip","148.70.97.197"));
+        portView.setText(AppPresences.getInstance().getString("server_port","9088"));
     }
 
     @OnClick({R.id.btn_config})
@@ -58,10 +59,10 @@ public class ServerConfigActivity extends LBaseActivity {
                 return;
             }
 
-//            HttpHelper.WEB_HOST = "http://"+ip+":"+port;
-//            mPresenceManager.putString("server_ip",ip);
-//            mPresenceManager.putString("server_port",port);
-//            mPresenceManager.putString(HttpHelper.ACTION.KEY_IP,HttpHelper.WEB_HOST);
+            HttpHelper.WEB_HOST = "http://"+ip+":"+port;
+            AppPresences.getInstance().putString("server_ip",ip);
+            AppPresences.getInstance().putString("server_port",port);
+            AppPresences.getInstance().putString(HttpHelper.ACTION.KEY_IP,HttpHelper.WEB_HOST);
             back(mActivity);
         }
     }

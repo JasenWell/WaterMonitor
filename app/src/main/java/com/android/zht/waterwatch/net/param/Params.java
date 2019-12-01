@@ -1,6 +1,7 @@
 package com.android.zht.waterwatch.net.param;
 
 
+import com.android.zht.waterwatch.net.HttpType;
 import com.hjh.baselib.constants.ModuleConfig;
 import com.hjh.baselib.entity.OkHttpEntity;
 import com.hjh.baselib.utils.AppPresences;
@@ -22,8 +23,9 @@ public class Params {
     }
     public static Map<String,String> loginParams(String userName, String password){
         Map<String,String> map = new HashMap<>();
-        map.put("usercode",userName);
+        map.put("account",userName);
         map.put("password",password);
+        map.put("requestType", HttpType.USER_LOGIN+"");
         return map;
     }
 

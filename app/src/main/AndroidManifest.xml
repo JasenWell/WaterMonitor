@@ -58,6 +58,11 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
+            android:name=".ui.MainReplaceActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
             android:name=".ui.LoginActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
@@ -76,6 +81,14 @@
         <activity android:name=".ui.AnalyzeChartActivity"
             android:launchMode="singleTask"
             android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoTitle_FullScreen"/>
+        <activity android:name=".ui.WebViewActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoTitle_FullScreen"/>
+        <activity android:name=".ui.BarchartTestActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoTitle_FullScreen"/>
         <activity
             android:name=".ui.ModifyPwdActivity"

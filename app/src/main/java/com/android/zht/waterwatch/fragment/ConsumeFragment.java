@@ -2,7 +2,6 @@ package com.android.zht.waterwatch.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.view.ViewCompat;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
@@ -20,19 +19,15 @@ import com.android.zht.waterwatch.util.DateUtil;
 import com.android.zht.waterwatch.widget.AppTitleLayout;
 import com.android.zht.waterwatch.widget.MonthSelectDialog;
 import com.android.zht.waterwatch.widget.MyDatePicker;
-import com.android.zht.waterwatch.widget.SelectPopView;
+import com.android.zht.waterwatch.widget.SelectBottomPopView;
 import com.hjh.baselib.base.LBaseFragment;
 import com.hjh.baselib.constants.ModuleConfig;
-import com.hjh.baselib.utils.DateTools;
 import com.hjh.baselib.widget.PullToRefreshLayout;
 import com.hjh.baselib.widget.PullableScrollView;
-import com.robinhood.ticker.TickerUtils;
-import com.robinhood.ticker.TickerView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -88,8 +83,8 @@ public class ConsumeFragment extends LBaseFragment {
 	private MainActivity mActivity;
 	private MyDatePicker dateDialog;
 
-	private SelectPopView areaView;
-	private SelectPopView yearView;
+	private SelectBottomPopView areaView;
+	private SelectBottomPopView yearView;
 
 	protected int mYearId = 0;
 	protected final static int[] MONTH = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
@@ -206,7 +201,7 @@ public class ConsumeFragment extends LBaseFragment {
 	private void selectArea(){
 		if(areaView == null){
 			getScreenSize();
-			areaView = new SelectPopView(mActivity, ModuleConfig.SCREEN_WIDTH, ModuleConfig.SCREEN_HEIGHT, new SelectPopView.OnClickPopView() {
+			areaView = new SelectBottomPopView(mActivity, ModuleConfig.SCREEN_WIDTH, ModuleConfig.SCREEN_HEIGHT, new SelectBottomPopView.OnClickPopView() {
 				@Override
 				public void onClickPop(int index) {
 
@@ -220,7 +215,7 @@ public class ConsumeFragment extends LBaseFragment {
 	private void selectYear(){
 		if(yearView == null){
 			getScreenSize();
-			yearView = new SelectPopView(mActivity, ModuleConfig.SCREEN_WIDTH, ModuleConfig.SCREEN_HEIGHT, new SelectPopView.OnClickPopView() {
+			yearView = new SelectBottomPopView(mActivity, ModuleConfig.SCREEN_WIDTH, ModuleConfig.SCREEN_HEIGHT, new SelectBottomPopView.OnClickPopView() {
 				@Override
 				public void onClickPop(int index) {
 

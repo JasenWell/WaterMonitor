@@ -228,7 +228,13 @@ public abstract class LBaseActivity extends AppCompatActivity implements BasicVi
             dispatchRefreshTask(event);
         }else if(event.getType() == MessageEvent.EventType.DELETE_ALL_FILES){
             onDeleteAllFiles(event);
+        }else if(event.getType() == MessageEvent.EventType.REFRESH_HOME){
+            refreshHome();
         }
+    }
+
+    public void refreshHome(){
+
     }
 
     //分发会议文件改变任务

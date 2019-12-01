@@ -7,10 +7,14 @@ import com.android.zht.waterwatch.bean.UserInfo;
 import com.android.zht.waterwatch.bean.VersionInfo;
 import com.android.zht.waterwatch.constants.EConfig;
 import com.google.gson.reflect.TypeToken;
+import com.hjh.baselib.entity.ResponseJson;
+import com.hjh.baselib.utils.AppPresences;
 
 import java.io.File;
 import java.lang.reflect.Type;
 import java.util.List;
+
+import okhttp3.Response;
 
 /**
  * Descroption:
@@ -18,14 +22,14 @@ import java.util.List;
  */
 public class HttpHelper {
 
-    public static String WEB_HOST = "http://139.199.165.130:9092/";//139.199.165.130,//192.168.1.102//112.74.218.80//a.wushangxiupin.com//120.25.74.232
+    public static String WEB_HOST = "http://148.70.97.197:9088";//139.199.165.130,//192.168.1.102//112.74.218.80//a.wushangxiupin.com//120.25.74.232
     public static final int PORT  = 9092;
     public static final String WEB_BUSINESS = "/ZHTWaterMeterServer/";
     public static final String KEY_BUSINESS = "requestData";
 
     public static String getURl(){
-        StringBuilder sb = new StringBuilder(WEB_HOST);//内网
-        return "http://10.0.10.32:9119/scpc2018/padapi/";//内网
+        StringBuilder sb = new StringBuilder(AppPresences.getInstance().getString(HttpHelper.ACTION.KEY_IP,HttpHelper.WEB_HOST));//内网
+        return sb.append("").toString();
 //        return sb.append(URL).append(":").append(PORT).append(ACTION).toString();
     }
 
@@ -46,8 +50,8 @@ public class HttpHelper {
     public enum BUSINESS{
     	
     	REQUEST_TEST("", Method.POST,true,Object.class, EConfig.LOGIN_SUCCESS),
-        REQUEST_LOGIN("api/user.html", Method.POST,true,UserInfo.class,EConfig.LOGIN_SUCCESS),
-        REQUEST_UPDATE_INFO("api/user.html", Method.POST,true,Integer.class,EConfig.LOGIN_SUCCESS),
+        REQUEST_LOGIN("/web/req_appdata.json", Method.POST,true,UserInfo.class,EConfig.LOGIN_SUCCESS),
+        REQUEST_UPDATE_INFO("/web/req_appdata.json", Method.POST,true,Integer.class,EConfig.LOGIN_SUCCESS),
         REQUEST_UPDATE_PWD("api/user.html", Method.POST,true,Integer.class,EConfig.LOGIN_SUCCESS),
         REQUEST_UPLOAD_SUGGEST("api/user.html", Method.POST,true,Integer.class,EConfig.LOGIN_SUCCESS),
 //        REQUEST_GET_RECHARGE_LIST("api/user.html", Method.POST,true,Object.class,new TypeToken<List<Object>>(){}.getType()),
@@ -64,7 +68,9 @@ public class HttpHelper {
         private boolean object;
         private Class clazz;
         private Type type;
-
+        private Response response;
+        private String errorMsg;
+        private ResponseJson responseJson;
         /**
          *
          * @param business 具体业务
@@ -81,6 +87,30 @@ public class HttpHelper {
             if(args != null && args.length > 0) {
                 setType(args[0]);
             }
+        }
+
+        public void setErrorMsg(String errorMsg) {
+            this.errorMsg = errorMsg;
+        }
+
+        public void setResponseJson(ResponseJson responseJson) {
+            this.responseJson = responseJson;
+        }
+
+        public String getErrorMsg() {
+            return errorMsg;
+        }
+
+        public ResponseJson getResponseJson() {
+            return responseJson;
+        }
+
+        public Response getResponse() {
+            return response;
+        }
+
+        public void setResponse(Response response) {
+            this.response = response;
         }
 
         public int getCode() {

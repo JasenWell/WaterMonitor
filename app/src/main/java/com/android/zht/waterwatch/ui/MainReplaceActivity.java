@@ -1,6 +1,8 @@
 package com.android.zht.waterwatch.ui;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -17,12 +19,12 @@ import com.android.zht.waterwatch.fragment.HomeFragment;
 import com.android.zht.waterwatch.fragment.HomeReplaceFragment;
 import com.android.zht.waterwatch.fragment.MineFragment;
 import com.android.zht.waterwatch.fragment.WarningFragment;
+import com.android.zht.waterwatch.fragment.WarningReplaceFragment;
 import com.android.zht.waterwatch.widget.TabBottomLayout;
 import com.hjh.baselib.base.LBaseActivity;
 import com.hjh.baselib.base.LBaseFragment;
 import com.hjh.baselib.constants.ModuleConfig;
 import com.hjh.baselib.utils.AppPresences;
-
 
 import butterknife.BindView;
 
@@ -30,7 +32,7 @@ import butterknife.BindView;
  * Description:图标灰色调cdcdcd  底部bfbfbf
  * Created by hjh on 2019/3/25.
  */
-public class MainActivity extends LBaseActivity implements View.OnClickListener {
+public class MainReplaceActivity extends MainActivity implements View.OnClickListener {
 
     @BindView(R.id.buttonLayout)
     LinearLayout mContainer;
@@ -50,10 +52,10 @@ public class MainActivity extends LBaseActivity implements View.OnClickListener 
     private int count = 0;
     private boolean first = true;//是否首次进入
     private UserInfo userInfo;
+    private boolean fromWebview = false;
 
     @Override
     protected void onProcessData() {
-        super.onProcessData();
         userInfo = findObject("user_info",UserInfo.class);
     }
 
@@ -70,7 +72,6 @@ public class MainActivity extends LBaseActivity implements View.OnClickListener 
 
     @Override
     public void onLoadDefaultView(Bundle savedInstanceState) {
-        super.onLoadDefaultView(savedInstanceState);
         addButtons();
     }
 
@@ -84,7 +85,7 @@ public class MainActivity extends LBaseActivity implements View.OnClickListener 
             return;
         }
 
-        if(mTemp == 0)return;
+        if(mTemp == 0 || fromWebview )return;
         showFragmentByIndex(mTemp,false);
     }
 
@@ -96,7 +97,7 @@ public class MainActivity extends LBaseActivity implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         mTemp = (int) v.getTag();
-        showFragmentByIndex((int) v.getTag(), false);
+        showFragmentByIndex(mTemp, false);
     }
 
     private void addButtons(){
@@ -110,11 +111,10 @@ public class MainActivity extends LBaseActivity implements View.OnClickListener 
         }
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0,LinearLayout.LayoutParams.WRAP_CONTENT);
         params.weight = 1;
-        fragments = new LBaseFragment[4];
-        fragments[0] = new HomeFragment().setOwner(this);
-        fragments[1] = new WarningFragment().setOwner(this);
-        fragments[2] = new ConsumeFragment().setOwner(this);
-        fragments[3] = new MineFragment().setOwner(this);
+        fragments = new LBaseFragment[3];
+        fragments[0] = new HomeReplaceFragment().setOwner(this).setUserInfo(userInfo);
+        fragments[1] = new WarningReplaceFragment().setOwner(this);
+        fragments[2] = new MineFragment().setOwner(this);
 
         for(int i = 0;i < fragments.length ;i++){
             TabBottomLayout mTabBottomLayout = new TabBottomLayout(this,i,fragments.length);
@@ -130,7 +130,6 @@ public class MainActivity extends LBaseActivity implements View.OnClickListener 
         fragments[mCurrentIndex].getBaseLayout().setCheck(true);
         fragments[1].getBaseLayout().setCheck(false);
         fragments[2].getBaseLayout().setCheck(false);
-        fragments[3].getBaseLayout().setCheck(false);
         ft.add(R.id.container, fragments[mCurrentIndex]);
 
 //        ft.show(fragments[mCurrentIndex]).commit();
@@ -158,45 +157,20 @@ public class MainActivity extends LBaseActivity implements View.OnClickListener 
             fragments[mCurrentIndex].getBaseLayout().setCheck(true);
             if (mCurrentIndex == 0) {
                 fragments[mCurrentIndex].onRefreshView();
+            }else if (mCurrentIndex == 1){
+                Intent intent = new Intent(mActivity,WebViewActivity.class);
+                intent.putExtra("url","http://148.70.97.197:9088/GIS/mapgis.html?sid=1006578&souid=1006578&datasourceid="+userInfo.getGisurl());
+                startActivityWithAnim(mActivity,intent);
             }
         }else {
 
         }
-
-
     }
 
     @Override
-    public void onBackPressed() {
-        if(count == 0){
-            showToast("再按一次退出程序");
-            enterTime = System.currentTimeMillis();
-            count++;
-            return;
-        }
-
-        if(((System.currentTimeMillis() - enterTime) / 1000) > 5){//间隔超过5秒
-            enterTime = System.currentTimeMillis();
-            showToast("再按一次退出程序");
-            return;
-        }
-        super.onBackPressed();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-    }
-
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-//        if ((keyCode == KeyEvent.KEYCODE_BACK) && mCurrentIndex == 0) {
-//            if(((HomeFragment)fragments[0]).getWebView().canGoBack()){
-//                ((HomeFragment)fragments[0]).getWebView().goBack();
-//                return true;
-//            }
-//        }
-
-        return super.onKeyDown(keyCode, event);
+    public void refreshHome() {
+        super.refreshHome();
+        fromWebview = true;
+        showFragmentByIndex(0,false);
     }
 }

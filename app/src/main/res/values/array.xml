@@ -21,7 +21,18 @@
         <item>@mipmap/self_uncheck</item>
     </array>
 
+    <array name="tab_select_image_replace">
+        <item>@mipmap/home_check</item>
+        <item>@mipmap/warning_check</item>
+        <item>@mipmap/self_check</item>
+    </array>
 
+
+    <array name="tab_normal_image_replace">
+        <item>@mipmap/home_uncheck</item>
+        <item>@mipmap/warning_uncheck</item>
+        <item>@mipmap/self_uncheck</item>
+    </array>
 
     <string-array name="tab_bottom_array">
         <item>首页</item>
@@ -30,6 +41,11 @@
         <item>我的</item>
     </string-array>
 
+    <string-array name="tab_bottom_array_replace">
+        <item>主页</item>
+        <item>告警</item>
+        <item>我的</item>
+    </string-array>
 
     
     

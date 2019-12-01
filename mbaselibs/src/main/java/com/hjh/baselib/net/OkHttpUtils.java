@@ -6,9 +6,11 @@ import com.hjh.baselib.entity.OkHttpEntity;
 import com.hjh.baselib.entity.ResponseJson;
 
 import java.io.File;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+import java.net.URLEncoder;
 
 import okhttp3.Call;
 import okhttp3.FormBody;
@@ -26,6 +28,7 @@ import okhttp3.RequestBody;
 public class OkHttpUtils {
     private volatile static OkHttpUtils mInstance;
     private OkHttpClient mOkHttpClient;
+    protected static final String UTF_8 = "UTF-8";
 
     /**
      * 构造方法
@@ -67,6 +70,74 @@ public class OkHttpUtils {
         return initClient(null);
     }
 
+    //拼装get参数
+    protected String pingGetParams(StringBuilder url,Map<String, Object> params){
+        if(url.indexOf("?") < 0){
+            url.append('?');
+        }
+
+        StringBuilder parampart = new StringBuilder();
+        Object temp = null;
+
+        try {
+            for (String name : params.keySet()) {
+                temp = params.get(name);
+                if (temp == null) {
+                    continue;
+                }
+
+                parampart.append('&');
+                parampart.append(URLEncoder.encode(String.valueOf(name), UTF_8));
+                parampart.append('=');
+                parampart.append(URLEncoder.encode(String.valueOf(temp), UTF_8));
+            }
+        } catch (UnsupportedEncodingException e) {
+            throw new IllegalArgumentException(e);
+        }
+
+        url.append(parampart);
+
+        return url.toString().replace("?&", "?");
+    }
+
+    //拼装get参数
+    protected String pingPostParams(Map<String, String> params){
+        StringBuilder parampart = new StringBuilder();
+        parampart.append("?");
+        Object temp = null;
+
+        try {
+            for (String name : params.keySet()) {
+                temp = params.get(name);
+                if (temp == null) {
+                    continue;
+                }
+
+                parampart.append('&');
+                parampart.append(String.valueOf(name));
+                parampart.append('=');
+                parampart.append(String.valueOf(temp));
+            }
+        } catch (Exception e) {
+            throw new IllegalArgumentException(e);
+        }
+
+        return parampart.toString().replace("?&", "");
+    }
+
+    public Call postWrapper(String data,String url){
+        Call call;
+        MediaType MEDIA_TYPE_NORAML_FORM = MediaType.parse("application/x-www-form-urlencoded;charset=utf-8");
+        RequestBody requestBody=RequestBody.create(MEDIA_TYPE_NORAML_FORM,data);
+        Request requestPost=new Request.Builder().url(url).post(requestBody).build();
+        call =  mOkHttpClient.newBuilder()
+                .connectTimeout(60 * 1000, TimeUnit.SECONDS)
+                .readTimeout(60 * 1000, TimeUnit.SECONDS)
+                .writeTimeout(60 * 1000, TimeUnit.SECONDS)
+                .build()
+                .newCall(requestPost);
+        return call;
+    }
 
     /**
      * post带参数请求数据
@@ -75,6 +146,9 @@ public class OkHttpUtils {
      * @return
      */
     public Call post(Map<String,String> map,String url){
+        if(false){
+            return postWrapper(pingPostParams(map),url);
+        }
         Call call;
         /**
          * 创建请求的参数body
@@ -93,6 +167,7 @@ public class OkHttpUtils {
         RequestBody body = builder.build();
         Request request = new Request.Builder()
                 .url(url)
+                //.addHeader("Connection","close")
                 .post(body)
                 .build();
         call =  mOkHttpClient.newBuilder()

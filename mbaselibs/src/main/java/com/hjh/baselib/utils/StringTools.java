@@ -48,7 +48,7 @@ public class StringTools {
 //	public static final String WORK_PHONE_PATTERN  ="^\\d{3}-?\\d{8}|\\d{4}-?\\d{8}$";
 
 	// 密码格式验证
-	public static final String PASSWORD_PATTERN = "^[a-zA-Z0-9_]{6,20}$";
+	public static final String PASSWORD_PATTERN = "^[a-zA-Z0-9_@]{6,20}$";
 
 	// 特殊字符串
 	public static final String SPECIAL_STRING_PATTERN = "[`~!@#$%^&*()+=|{}':;'\",\\[\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]";

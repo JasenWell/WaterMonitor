@@ -2,21 +2,14 @@ package com.android.zht.waterwatch.widget;
 
 import android.app.Activity;
 import android.graphics.drawable.ColorDrawable;
-import android.os.Bundle;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
 import com.android.zht.waterwatch.R;
 import com.hjh.baselib.widget.PopView;
-
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -25,7 +18,7 @@ import butterknife.OnClick;
  * Created by hjh on 2015/8/31.
  */
 
-public class SelectPopView extends PopView{
+public class SelectBottomPopView extends PopView{
 
     @BindView(R.id.top_view)
     View mTop;
@@ -35,7 +28,7 @@ public class SelectPopView extends PopView{
 
     private OnClickPopView mListener;
 
-    public SelectPopView(Activity owner, int width, int height,OnClickPopView listener){
+    public SelectBottomPopView(Activity owner, int width, int height, OnClickPopView listener){
         super(owner, width, height);
         mListener = listener;
 
@@ -56,6 +49,10 @@ public class SelectPopView extends PopView{
 
     public void show(){
         showAtLocation(mOwner.getWindow().getDecorView(), Gravity.BOTTOM| Gravity.CENTER_HORIZONTAL,0, 0);
+    }
+
+    public void show(View parent){
+        showAtLocation(parent, Gravity.BOTTOM| Gravity.CENTER_HORIZONTAL,0, 0);
     }
 
     public void addChild(boolean area){

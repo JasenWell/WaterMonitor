@@ -1,6 +1,11 @@
 package com.android.zht.waterwatch.bean;
 
+import com.android.zht.waterwatch.util.DateUtil;
+import com.google.gson.annotations.SerializedName;
+import com.hjh.baselib.utils.DateTools;
+
 import java.io.Serializable;
+import java.text.DecimalFormat;
 import java.util.List;
 
 /**
@@ -16,6 +21,7 @@ public class WaterEffectInfo implements Serializable {
     private int id;
     private int schoolId;
     private String date;
+    @SerializedName("classifyInfo")
     private List<ClassifyInfo> classifyInfoList;
 
     public WaterEffectInfo() {
@@ -52,4 +58,5 @@ public class WaterEffectInfo implements Serializable {
     public void setClassifyInfoList(List<ClassifyInfo> classifyInfoList) {
         this.classifyInfoList = classifyInfoList;
     }
+
 }

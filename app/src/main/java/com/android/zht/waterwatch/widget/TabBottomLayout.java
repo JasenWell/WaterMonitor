@@ -68,15 +68,15 @@ public class TabBottomLayout extends BaseLinearLayout {
 	}
 	
 	private void loadResource(){
-		if(mPosition >= getResources().getStringArray(R.array.tab_bottom_array).length){
+		if(mPosition >= getResources().getStringArray(R.array.tab_bottom_array_replace).length){
 			return;
 		}
-		TypedArray normalTypedArray = getResources().obtainTypedArray(R.array.tab_normal_image);
+		TypedArray normalTypedArray = getResources().obtainTypedArray(R.array.tab_normal_image_replace);
 		normalId = normalTypedArray.getResourceId(mPosition, 0);
-		TypedArray selectTypedArray = getResources().obtainTypedArray(R.array.tab_select_image);
+		TypedArray selectTypedArray = getResources().obtainTypedArray(R.array.tab_select_image_replace);
 		selectId = selectTypedArray.getResourceId(mPosition, 0);
 		mImageView.setImageResource(normalId);
-		mTextView.setText(getResources().getStringArray(R.array.tab_bottom_array)[mPosition]);
+		mTextView.setText(getResources().getStringArray(R.array.tab_bottom_array_replace)[mPosition]);
 		mTextView.setVisibility(View.VISIBLE);
 		mTextView.setTextColor(getAppColor(R.color.gray));
 		normalTypedArray.recycle();
