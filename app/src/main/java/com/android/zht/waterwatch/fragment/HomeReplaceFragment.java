@@ -193,6 +193,10 @@ public class HomeReplaceFragment extends LBaseFragment {
 				@Override
 				public void onClickPop(int index) {
 					currentIndex = index;
+					selectTimeView.setText("本月");
+					if(index == 1){
+						selectTimeView.setText("上月");
+					}
 					List<ClassifyInfo> dataList = effectInfoList.get(currentIndex).getClassifyInfoList();
 					if(dataList == null || dataList.size() == 0)return;
 					refreshPieChat(dataList);
@@ -200,7 +204,12 @@ public class HomeReplaceFragment extends LBaseFragment {
 
 				@Override
 				public String getShowText(int index) {
-					return DateTools.formatTimestamp(effectInfoList.get(index).getDate());
+					if(index == 0){
+						return "本月";
+					}else {
+						return "上月";
+					}
+					//return DateTools.formatTimestamp(effectInfoList.get(index).getDate());
 				}
 			});
 		}
@@ -270,7 +279,8 @@ public class HomeReplaceFragment extends LBaseFragment {
 			schoolName.setText(schoolInfo.getName());
 			mTotalWater.setText(schoolInfo.getTotal());
 			if(schoolInfo.getEffectInfoList() != null && schoolInfo.getEffectInfoList().size() > 0) {
-				selectTimeView.setText(DateTools.formatTimestamp(schoolInfo.getEffectInfoList().get(0).getDate()));
+				//selectTimeView.setText(DateTools.formatTimestamp(schoolInfo.getEffectInfoList().get(0).getDate()));
+				selectTimeView.setText("本月");
 				int size = schoolInfo.getEffectInfoList().size();
 				for(int i = 0; i< size-1;i++){
 					effectInfoList.add(schoolInfo.getEffectInfoList().get(i));
@@ -481,7 +491,7 @@ public class HomeReplaceFragment extends LBaseFragment {
 				if(value == 24.0){
 					return "";
 				}
-				return String.valueOf((int)(value+1));
+				return String.valueOf((int)(value));
 			}
 		});
 

@@ -43,7 +43,7 @@
 
     <string-array name="tab_bottom_array_replace">
         <item>主页</item>
-        <item>告警</item>
+        <item>查询</item>
         <item>我的</item>
     </string-array>
 

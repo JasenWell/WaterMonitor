@@ -113,6 +113,14 @@ public class AppTitleLayout extends BaseLinearLayout {
 		}
 	}
 
+	public TextView getTitleView(){
+		return titleView;
+	}
+
+	public RelativeLayout getLayout() {
+		return layout;
+	}
+
 	public String getTitleText(){
 
 		if(titleView != null){
