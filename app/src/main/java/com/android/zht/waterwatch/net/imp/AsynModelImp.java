@@ -148,11 +148,9 @@ public class AsynModelImp implements IAsynModel {
 
     @Override
     public void login(final HttpHelper.BUSINESS business, String userName, String password) {
-        if(!NetworkUtil.getInstance().isNetworkConnected()){
-            iBaseCallBack.showErrorInfo(EConfig.HttpResult.ERR_NET,errorNet);
-            return;
+        if(checkNetStatus()) {
+            okHttpUtils.post(Params.loginParams(userName, password), HttpHelper.PostGetUrl(business.getBusiness())).enqueue(new CallbackImp(business));
         }
-        okHttpUtils.post(Params.loginParams(userName,password), HttpHelper.PostGetUrl(business.getBusiness())).enqueue(new CallbackImp(business));
     }
 
     @Override
@@ -164,6 +162,16 @@ public class AsynModelImp implements IAsynModel {
     @Override
     public void changePassword(final HttpHelper.BUSINESS business,String userid,String oldpassword,String newpassword) {
         okHttpUtils.post(Params.getPasswordParams(userid,newpassword), HttpHelper.PostGetUrl(business.getBusiness())).enqueue(new CallbackImp(business));
+    }
+
+    private boolean checkNetStatus(){
+        if(!NetworkUtil.getInstance().isNetworkConnected()){
+            iBaseCallBack.showErrorInfo(EConfig.HttpResult.ERR_NET,errorNet);
+            iBaseCallBack.getActivity().hideLoadDialog();
+            return false;
+        }
+
+        return true;
     }
 
     /*
