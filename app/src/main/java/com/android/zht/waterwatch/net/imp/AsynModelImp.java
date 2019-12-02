@@ -111,6 +111,7 @@ public class AsynModelImp implements IAsynModel {
                             return;
                         }
                         ResponseJson responseJson = ResponseJson.fromJson(json, business.getClazz());
+                        responseJson.setJson(json);
                         business.setResponseJson(responseJson);
                     } catch (Exception e) {
                         e.printStackTrace();

@@ -259,6 +259,7 @@ public abstract class LBaseActivity extends AppCompatActivity implements BasicVi
     @Override
     protected void onResume() {
         super.onResume();
+        getScreenSize();
         onResumeProcessData();
     }
 

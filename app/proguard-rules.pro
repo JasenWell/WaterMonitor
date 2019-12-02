@@ -183,6 +183,7 @@
 #
 # 实体类，设置成自己的包名路径
 -keep class com.android.zht.waterwatch.bean.**{*;}
+-keep class com.hjh.baselib.entity.**{*;}
 
 # ----------------------------- 其他的 -----------------------------
 # 删除代码中Log相关的代码

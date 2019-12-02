@@ -32,6 +32,8 @@ public final class ResponseJson<T> implements Serializable {
 	@Expose
 	private String yanzhenma;
 
+	private String json;//原始json数据
+
 	public int getStatus() {
 		return status;
 	}
@@ -120,5 +122,13 @@ public final class ResponseJson<T> implements Serializable {
 
 	public void setYanzhenma(String yanzhenma) {
 		this.yanzhenma = yanzhenma;
+	}
+
+	public String getJson() {
+		return json;
+	}
+
+	public void setJson(String json) {
+		this.json = json;
 	}
 }
