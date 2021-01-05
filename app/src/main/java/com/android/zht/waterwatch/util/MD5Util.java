@@ -1,4 +1,4 @@
-package com.hjh.bp;
+package com.android.zht.waterwatch.util;
 
 import java.security.MessageDigest;
 
